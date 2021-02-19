@@ -1,0 +1,1 @@
+anonimously user can send any data. but if they are really can fight in conception, so just do it but only with auth.

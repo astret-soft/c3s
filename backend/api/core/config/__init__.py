@@ -10,7 +10,7 @@ __all__ = (
     'Settings',
 )
 
-version = '0.0.1'
+version = '##version##'
 
 
 class Settings(BaseSettings):
@@ -19,7 +19,7 @@ class Settings(BaseSettings):
     class Config:
         env_prefix = 'app_'
 
-    version = version
+    version: str = version
     auth: AuthSettings = AuthSettings()
     db: DbSettings = DbSettings()
     paging: PagingSettings = PagingSettings()

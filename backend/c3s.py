@@ -1,27 +1,10 @@
-""" Cloud Scene Screen Service
+""" Cloud Scene Screen Service (C3S)
 """
-import uvicorn
-from fastapi import FastAPI
 
-from backend.core.config import Settings
+from cli import cli
 
-settings = Settings()
-app = FastAPI()
-
-
-@app.get('/info')
-async def get_info():
-    return {
-        'name': __name__,
-        'title': __doc__,
-        **settings.info()
-    }
 
 if __name__ == '__main__':
-    """ Run in service
+    """ Entry point for main CLI
     """
-    uvicorn.run(
-        app,
-        host=settings.host,
-        port=settings.port
-    )
+    cli()
