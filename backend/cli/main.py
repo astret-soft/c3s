@@ -3,6 +3,7 @@
 import click
 
 from api.core.config import Settings
+from api import app
 
 settings = Settings()
 
@@ -17,3 +18,13 @@ def cli():
     """ Command Line Interface (CLI)
     """
     pass
+
+
+@cli.command()
+@click.option('--host', default=settings.host)
+@click.option('--port', default=settings.port)
+def api(**kwargs):
+    """ Start backend REST API server (API)
+    """
+    import uvicorn
+    uvicorn.run(app, **kwargs)
