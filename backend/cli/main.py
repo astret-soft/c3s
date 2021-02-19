@@ -33,4 +33,6 @@ def api(**kwargs):
 @cli.command()
 @click.argument('content')
 def ping(content: str):
+    """ Just working like ping pong in CLI: print in console what you typed
+    """
     print(content)
