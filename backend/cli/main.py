@@ -21,8 +21,8 @@ def cli():
 
 
 @cli.command()
-@click.argument('--host', default=settings.host)
-@click.argument('--port', default=settings.port)
+@click.option('--host', '-h', default=settings.host)
+@click.option('--port', '-p', default=settings.port)
 def api(**kwargs):
     """ Start backend REST API server (API)
     """
@@ -35,4 +35,4 @@ def api(**kwargs):
 def ping(content: str):
     """ Just working like ping pong in CLI: print in console what you typed
     """
-    print(content)
+    click.echo(content)
