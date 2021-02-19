@@ -21,10 +21,16 @@ def cli():
 
 
 @cli.command()
-@click.option('--host', default=settings.host)
-@click.option('--port', default=settings.port)
+@click.argument('--host', default=settings.host)
+@click.argument('--port', default=settings.port)
 def api(**kwargs):
     """ Start backend REST API server (API)
     """
     import uvicorn
     uvicorn.run(app, **kwargs)
+
+
+@cli.command()
+@click.argument('content')
+def ping(content: str):
+    print(content)
