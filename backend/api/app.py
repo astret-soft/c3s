@@ -2,7 +2,7 @@
 """
 from fastapi import FastAPI
 
-from api.core.config import Settings
+from .core.config import Settings
 
 __all__ = (
     'app',

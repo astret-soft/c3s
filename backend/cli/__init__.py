@@ -1,4 +1,4 @@
 """ Command Line Interface
 """
 
-from .main import cli as cli
+from .root import cli as cli
