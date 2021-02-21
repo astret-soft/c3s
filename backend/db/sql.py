@@ -1,8 +1,7 @@
 """ DB module
 """
-from tortoise.contrib.fastapi import register_tortoise
 from api import app
-
+from tortoise.contrib.fastapi import register_tortoise
 
 register_tortoise(
     app,

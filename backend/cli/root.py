@@ -1,9 +1,9 @@
 """ Command Line Interface
 """
 import click
-
-from api.core.config import Settings
+import uvicorn
 from api import app
+from api.core.config import Settings
 
 settings = Settings()
 
@@ -26,7 +26,6 @@ def cli():
 def api(**kwargs):
     """ Start backend REST API server (API)
     """
-    import uvicorn
     uvicorn.run(app, **kwargs)
 
 
