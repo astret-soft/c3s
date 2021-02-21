@@ -22,4 +22,4 @@ async def get_version():
 
 @app.get('/info')
 async def get_info():
-    return {settings.info()}
+    return settings.info()
