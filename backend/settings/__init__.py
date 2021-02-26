@@ -19,6 +19,8 @@ class Settings(BaseSettings):
     class Config:
         env_prefix = 'app_'
 
+    title: str = 'c3s'
+    description: str = 'Cloud Scene Screen Service'
     version: str = version
     auth: AuthSettings = AuthSettings()
     db: DbSettings = DbSettings()
@@ -31,7 +33,7 @@ class Settings(BaseSettings):
         """ Information about APP depends of settings
         """
         return self.dict(
-            exclude=None if self.debug else {
+            exclude=None if self.debug else {  # todo: check before prod!!!
                 'db', 'host', 'port', 'debug'
             }
         )

@@ -1,18 +1,21 @@
-""" Command Line Interface
+""" Entry point for main CLI
 """
 import click
 import uvicorn
-from api import app
-from api.core.config import Settings
 
-settings = Settings()
-
-__all__ = (
-    'cli',
+from backend import (
+    app,
+    settings
 )
 
 
-@click.group(context_settings={'help_option_names': ['-h', '--help']})
+def start_app(**kwargs):
+    """ Start backend REST API server (API)
+    """
+    uvicorn.run(app, **kwargs)
+
+
+@click.group()
 @click.version_option(version=settings.version)
 def cli():
     """ Command Line Interface (CLI)
@@ -23,10 +26,10 @@ def cli():
 @cli.command()
 @click.option('--host', '-h', default=settings.host)
 @click.option('--port', '-p', default=settings.port)
-def api(**kwargs):
+def start(**kwargs):
     """ Start backend REST API server (API)
     """
-    uvicorn.run(app, **kwargs)
+    start_app(**kwargs)
 
 
 @cli.command()
@@ -35,3 +38,9 @@ def ping(content: str):
     """ Just working like ping pong in CLI: print in console what you typed
     """
     click.echo(content)
+
+
+if __name__ == '__main__':
+    """ Entry point for main CLI
+    """
+    cli()
