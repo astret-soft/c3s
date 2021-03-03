@@ -15,8 +15,8 @@ app = FastAPI(
     description=settings.description,
     version=settings.version
 )
-init_routers(app)
 sql_attach(app)
+init_routers(app)
 
 
 def start_app(**kwargs):
