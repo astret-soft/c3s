@@ -1,0 +1,21 @@
+version: '3.9'
+
+services:
+
+  psql:
+    image: postgres:13.2-alpine
+    restart: always
+    environment:
+      POSTGRES_DB: c3s
+      POSTGRES_USER: c3s
+      POSTGRES_PASSWORD: test
+    volumes:
+      - ./psql-test-volume:/var/lib/postgresql
+    ports:
+      - 5432:5432  # don't do it in prod!
+
+  adminer:
+    image: adminer  # https://hub.docker.com/_/adminer
+    restart: always
+    ports:
+      - 8080:8080

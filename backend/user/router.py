@@ -5,13 +5,16 @@ from typing import List
 from fastapi import APIRouter
 from tortoise.contrib.fastapi import HTTPNotFoundError
 
-from user.models import (
+from user.models.user import (
     User,
     User_Pydantic,
     UserIn_Pydantic
 )
 
-router = APIRouter()
+router = APIRouter(
+    tags=['user'],
+    prefix='/user',
+)
 
 
 @router.post('/', response_model=User_Pydantic)

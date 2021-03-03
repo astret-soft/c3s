@@ -2,7 +2,7 @@
 """
 from tortoise.contrib.fastapi import register_tortoise
 
-from backend import settings
+from backend.settings import settings
 
 
 def attach(app):

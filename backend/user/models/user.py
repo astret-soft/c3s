@@ -27,7 +27,7 @@ class User(models.Model):
     @classmethod
     async def create(cls, user: Optional[dict]) -> 'User':
         password_hash = cls.get_password_hash(user.password)
-        model = cls(**user_dict, password_hash=password_hash)
+        model = cls(**user, password_hash=password_hash)
         await model.save()
         return model
 
@@ -45,5 +45,5 @@ class User(models.Model):
         exclude = ['password_hash']
 
 
-User_Pydantic = pydantic_model_creator(Users, name="User")
-UserIn_Pydantic = pydantic_model_creator(Users, name="UserIn", exclude_readonly=True)
+User_Pydantic = pydantic_model_creator(User, name="User")
+UserIn_Pydantic = pydantic_model_creator(User, name="UserIn", exclude_readonly=True)

@@ -16,5 +16,5 @@ class DbSettings(BaseSettings):
     class Config:
         env_prefix = 'db_'
 
-    sql: Union[PostgresDsn, MySqlDsn] = 'postgres://user:pass@localhost:5432/c3s'
+    sql: Union[PostgresDsn, MySqlDsn] = 'postgres://c3s:test@localhost:5432/c3s'
     redis: RedisDsn = 'redis://user:pass@localhost:6379/1'
